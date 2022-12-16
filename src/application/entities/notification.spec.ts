@@ -1,17 +1,15 @@
-import { Content } from "./content"
+import { Content } from './content';
+import { Notification } from './notification';
 
 describe('Notification', () => {
-  it('should be able to create a notification content', () => {
-    const content = new Content('Você recebeu uma solicitação de amizade.');
+  it('should be able to create a notification', () => {
+    const content = new Notification({
+      content: new Content('Você recebeu uma solicitação de amizade.'),
+      category: 'social',
+      recipientId: '78',
+      readAt: new Date(),
+    });
 
-    expect(content).toBeTruthy()
-  })
-
-  it('should not be able to create a notification content with less then 5 charachters', () => {
-    expect(() => new Content('hjk')).toThrow()
-  })
-
-  it('should not be able to create a notification content with more then 250 charachters', () => {
-    expect(() => new Content('a'.repeat(251))).toThrow()
-  })
-})
+    expect(content).toBeTruthy();
+  });
+});
